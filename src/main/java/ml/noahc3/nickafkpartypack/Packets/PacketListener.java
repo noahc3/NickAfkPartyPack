@@ -30,10 +30,10 @@ public class PacketListener {
                         String displayName = Tasks.getPlayerDisplayName(player);
                         String prefix = Tasks.getPlayerPrefix(player);
                         String fullName = prefix + displayName;
-                        String headName = Constants.config.getBoolean("show-afk-tag-over-heads") ? Tasks.cropString(fullName, 16) : displayName;
+                        String headName = Constants.config.getBoolean("show-afk-tag-over-heads") ? fullName : displayName;
 
                         player.setDisplayName(displayName);
-                        PlayerInfoData injectPid = new PlayerInfoData(pid.getProfile().withName(headName), pid.getLatency(), pid.getGameMode(), WrappedChatComponent.fromText(fullName));
+                        PlayerInfoData injectPid = new PlayerInfoData(pid.getProfile().withName(Tasks.cropString(headName, 16)), pid.getLatency(), pid.getGameMode(), WrappedChatComponent.fromText(fullName));
                         event.getPacket().getPlayerInfoDataLists().write(0, Collections.singletonList(injectPid));
                     }
                 }
