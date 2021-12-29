@@ -1,7 +1,7 @@
 # NickAfkPartyPack Configuration File
 
 # show-afk-tag-over-heads: no
-#   Setting to YES will show [AFK] overhead when a player is AFK, but will only show the first 10 letters of a username/nickname if the username/nickname is longer than 11 characters when AFK.
+#   Setting to YES will show [AFK] overhead when a player is AFK, but will only show the first 9 letters of a username/nickname if the username/nickname is longer than 10 characters when AFK.
 #
 # auto-afk-time-seconds: 300
 #   Players will automatically be set as AFK after this many seconds of being idle.

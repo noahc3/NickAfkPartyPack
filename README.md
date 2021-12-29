@@ -22,7 +22,7 @@ Small Spigot plugin coded up in a day to add nicknames and AFK status for Minecr
 
 * Nicknames are limited to 16 characters as this is the maximum allowed above player heads
     * Yes this can be upped to 48 with scoreboards but I chose not to add this for better plugin compatibility.
-* If showing AFK status above player head is enabled and a player's username/nickname is longer than 11 characters, their nicknames will be truncated to 10 characters due to limitation above.
+* If showing AFK status above player head is enabled and a player's username/nickname is longer than 10 characters, their nicknames will be truncated to 9 characters due to limitation above.
 * Player will flicker for ~2 ticks when their AFK status or nickname changes.
 
 
