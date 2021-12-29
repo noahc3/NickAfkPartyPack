@@ -1,0 +1,16 @@
+# NickAfkPartyPack Configuration File
+
+# show-afk-tag-over-heads: no
+#   Setting to YES will show [AFK] overhead when a player is AFK, but will only show the first 7 letters of a nickname if the nickname is longer than 10 characters.
+#
+# auto-afk-time-seconds: 300
+#   Players will automatically be set as AFK after this many seconds of being idle.
+#   Set to negative number to disable.
+#
+# afk-kick-time-seconds: 600
+#   Players will be kicked after this many seconds of being idle.
+#   Set to negative number to disable.
+
+show-afk-tag-over-heads: no
+auto-afk-time-seconds: 300
+afk-kick-time-seconds: 600

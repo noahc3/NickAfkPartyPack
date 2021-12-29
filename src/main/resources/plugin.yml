@@ -1,0 +1,89 @@
+name: NickAfkPartyPack
+version: 1.0.0
+main: ml.noahc3.nickafkpartypack.NickAfkPartyPack
+api-version: 1.18
+author: noahc3
+website: https://github.com/noahc3/nickafkpartypack
+depend: [ProtocolLib]
+
+commands:
+  nick:
+    description: Set your nickname
+    usage: /<command> [nickname]
+    permission: nickafkpartypack.player.nick
+
+  nonick:
+    description: Remove your nickname
+    usage: /<command>
+    permission: nickafkpartypack.player.nonick
+    aliases:
+      - nickoff
+
+  nicklist:
+    description: List nicknames and normal in-game names of all online players.
+    usage: /<command>
+    permission: nickafkpartypack.player.nicklist
+
+  afk:
+    description: Toggle your AFK status
+    usage: /<command>
+    permission: nickafkpartypack.player.afk
+    aliases:
+      - toggleafk
+      - away
+
+  setothernick:
+    description: Set nickname for another player
+    usage: /<command> [player]
+    permission: nickafkpartypack.op.setothernick
+
+  delothernick:
+    description: Remove nickname from another player
+    usage: /<command> [player]
+    permission: nickafkpartypack.op.delothernick
+
+  nickafkreload:
+    description: Reload configuration for NickAfkPartyPack
+    usage: /<command>
+    permission: nickafkpartypack.op.reload
+
+permissions:
+  nickafkpartypack.player.nick:
+    description: Permission to use /nick
+    default: true
+  nickafkpartypack.player.nonick:
+    description: Permission to use /nonick and /nickoff
+    default: true
+  nickafkpartypack.player.nicklist:
+    description: Permission to use /nicklist
+    default: true
+  nickafkpartypack.player.afk:
+    description: Permission to use /afk, /toggleafk and /away
+    default: true
+  nickafkpartypack.op.setothernick:
+    description: Permission to use /setothernick
+    default: op
+  nickafkpartypack.op.delothernick:
+    description: Permission to use /delothernick
+    default: op
+  nickafkpartypack.op.reload:
+    description: Permission to use /nickafkreload.
+    default: op
+  nickafkpartypack.player.*:
+    description: Wildcard permission for all player command permissions
+    children:
+      nickafkpartypack.player.nick: true
+      nickafkpartypack.player.nonick: true
+      nickafkpartypack.player.nicklist: true
+      nickafkpartypack.player.afk: true
+  nickafkpartypack.op.*:
+    description: Wildcard permission for all operator command permissions
+    children:
+      nickafkpartypack.op.setothernick: true
+      nickafkpartypack.op.delothernick: true
+      nickafkpartypack.op.reload: true
+  nickafkpartypack.*:
+    description: Wildcard permission for all player and operator command permissions
+    children:
+      nickafkpartypack.player.*: true
+      nickafkpartypack.op.*: true
