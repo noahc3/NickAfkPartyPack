@@ -3,7 +3,7 @@ version: 1.0.0
 main: ml.noahc3.nickafkpartypack.NickAfkPartyPack
 api-version: 1.18
 author: noahc3
-website: https://github.com/noahc3/nickafkpartypack
+website: https://www.curseforge.com/minecraft/bukkit-plugins/nick-afk-party-pack
 depend: [ProtocolLib]
 
 commands:
@@ -20,7 +20,7 @@ commands:
       - nickoff
 
   nicklist:
-    description: List nicknames and normal in-game names of all online players.
+    description: List online players and their nicknames.
     usage: /<command>
     permission: nickafkpartypack.player.nicklist
 
