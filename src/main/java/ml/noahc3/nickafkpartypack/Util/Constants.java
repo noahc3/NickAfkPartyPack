@@ -15,5 +15,4 @@ public class Constants {
     public static HashMap<UUID, Long> afkTimestamps;
     public static HashMap<UUID, Float> playerYaw;
     public static HashMap<UUID, Float> playerPitch;
-    public static int SlowTickTaskId;
 }

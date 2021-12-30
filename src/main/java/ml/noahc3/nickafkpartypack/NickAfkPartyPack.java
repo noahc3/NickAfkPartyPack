@@ -25,10 +25,8 @@ public class NickAfkPartyPack extends JavaPlugin {
         Constants.playerYaw = new HashMap<>();
         Constants.playerPitch = new HashMap<>();
 
-
         PacketListener.init();
         EventListener.init();
-        getServer().getPluginManager().registerEvents(new EventListener(), Constants.plugin);
 
         this.getCommand("nick").setExecutor(new CommandNick());
         this.getCommand("afk").setExecutor(new CommandAfk());
@@ -42,6 +40,8 @@ public class NickAfkPartyPack extends JavaPlugin {
     @Override
     public void onDisable() {
         getLogger().info("Unloading NickAfkPartyPack.");
-        Constants.plugin.getServer().getScheduler().cancelTask(Constants.SlowTickTaskId);
+        EventListener.deinit();
+        PacketListener.deinit();
+
     }
 }

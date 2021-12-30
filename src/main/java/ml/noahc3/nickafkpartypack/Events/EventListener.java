@@ -15,8 +15,15 @@ import java.util.UUID;
 
 public class EventListener implements Listener {
 
+    private static int SlowTickTaskId;
+
     public static void init() {
-        Constants.SlowTickTaskId = Constants.plugin.getServer().getScheduler().scheduleSyncRepeatingTask(Constants.plugin, EventListener::SlowTick, 100, 10);
+        SlowTickTaskId = Constants.plugin.getServer().getScheduler().scheduleSyncRepeatingTask(Constants.plugin, EventListener::SlowTick, 100, 10);
+        Constants.plugin.getServer().getPluginManager().registerEvents(new EventListener(), Constants.plugin);
+    }
+
+    public static void deinit() {
+        Constants.plugin.getServer().getScheduler().cancelTask(SlowTickTaskId);
     }
 
     public static void SlowTick() {
