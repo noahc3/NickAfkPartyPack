@@ -2,6 +2,8 @@
 
 Small Spigot plugin coded up in a day to add nicknames and AFK status for Minecraft 1.18.
 
+Download on DevBukkit: https://dev.bukkit.org/projects/nick-afk-party-pack
+
 ### [REQUIRES PROTOCOLLIB (DEV BUILD FOR 1.18)](https://www.spigotmc.org/resources/protocollib.1997/)
 
 ![](https://i.imgur.com/GhYkvBx.png)
