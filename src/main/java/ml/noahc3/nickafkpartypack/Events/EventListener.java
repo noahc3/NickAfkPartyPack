@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.persistence.PersistentDataContainer;
 
@@ -94,6 +95,20 @@ public class EventListener implements Listener {
 
         try {
             event.setLeaveMessage(event.getLeaveMessage().replace(WrappedGameProfile.fromPlayer(player).getName(), Tasks.getPlayerDisplayName(player)));
+        } catch (NullPointerException ignored) { }
+    }
+
+    @EventHandler (priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onPlayerDeath(PlayerDeathEvent event) {
+        Player player = event.getEntity();
+
+        PersistentDataContainer data = player.getPersistentDataContainer();
+        data.remove(Constants.afkKey);
+
+        updatePlayerStamps(player);
+
+        try {
+            event.setDeathMessage(event.getDeathMessage().replace(WrappedGameProfile.fromPlayer(player).getName(), Tasks.getPlayerDisplayName(player)));
         } catch (NullPointerException ignored) { }
     }
 
