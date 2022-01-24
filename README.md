@@ -43,3 +43,8 @@ Download on DevBukkit: https://dev.bukkit.org/projects/nick-afk-party-pack
 * /setothernick [player] [nickname]: Set the nickname of another player. Needs OP (or permission node).
 * /delothernick [player]: Remove the nickname of another player. Needs OP (or permission node).
 * /nickafkreload: Reload plugin configuration file. Needs OP (or permission node).
+
+### Credits
+
+* @dmulloy2 and contributors for [ProtocolLib](https://github.com/dmulloy2/ProtocolLib).
+* @Zeelia for adding death message support.
