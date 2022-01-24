@@ -6,7 +6,7 @@
 
     <groupId>ml.noahc3</groupId>
     <artifactId>NickAfkPartyPack</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
 
     <repositories>
         <repository>
