@@ -112,6 +112,26 @@ public class EventListener implements Listener {
         } catch (NullPointerException ignored) { }
     }
 
+    @EventHandler (priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onPlayerMove(PlayerMoveEvent event) {
+        Player player = event.getPlayer();
+
+        PersistentDataContainer data = player.getPersistentDataContainer();
+        data.remove(Constants.afkKey);
+
+        updatePlayerStamps(player);
+    }
+
+    @EventHandler (priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    public void onPlayerInteract(PlayerInteractEvent event) {
+        Player player = event.getPlayer();
+
+        PersistentDataContainer data = player.getPersistentDataContainer();
+        data.remove(Constants.afkKey);
+
+        updatePlayerStamps(player);
+    }
+
     private static void updatePlayerStamps(Player player) {
         Constants.afkTimestamps.put(player.getUniqueId(), System.currentTimeMillis());
         Constants.playerYaw.put(player.getUniqueId(), player.getLocation().getYaw());
