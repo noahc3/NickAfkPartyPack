@@ -115,6 +115,7 @@ public class EventListener implements Listener {
     @EventHandler (priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
+        if (! Tasks.isPlayerAfk(player)) return;
 
         PersistentDataContainer data = player.getPersistentDataContainer();
         data.remove(Constants.afkKey);
@@ -125,6 +126,7 @@ public class EventListener implements Listener {
     @EventHandler (priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
+        if (! Tasks.isPlayerAfk(player)) return;
 
         PersistentDataContainer data = player.getPersistentDataContainer();
         data.remove(Constants.afkKey);
