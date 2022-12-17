@@ -1,5 +1,6 @@
 package ml.noahc3.nickafkpartypack.Util;
 
+import java.util.EnumSet;
 import com.comphenix.protocol.wrappers.EnumWrappers;
 import com.comphenix.protocol.wrappers.PlayerInfoData;
 import com.comphenix.protocol.wrappers.WrappedChatComponent;
@@ -17,20 +18,15 @@ public class Tasks {
     public static void refreshPlayer(Player player) {
         PlayerInfoData pid = new PlayerInfoData(WrappedGameProfile.fromPlayer(player), 1, EnumWrappers.NativeGameMode.SURVIVAL, WrappedChatComponent.fromText("..."));
 
-        WrapperPlayServerPlayerInfo remPacket = new WrapperPlayServerPlayerInfo();
-        remPacket.setAction(EnumWrappers.PlayerInfoAction.REMOVE_PLAYER);
-        remPacket.setData(Collections.singletonList(pid));
-
-        WrapperPlayServerPlayerInfo addPacket = new WrapperPlayServerPlayerInfo();
-        addPacket.setAction(EnumWrappers.PlayerInfoAction.ADD_PLAYER);
-        addPacket.setData(Collections.singletonList(pid));
+        WrapperPlayServerPlayerInfo updatePacket = new WrapperPlayServerPlayerInfo();
+        updatePacket.setAction(EnumSet.of(EnumWrappers.PlayerInfoAction.ADD_PLAYER));
+        updatePacket.setData(Collections.singletonList(pid));
 
         for(Player p : Bukkit.getOnlinePlayers())
         {
             p.hidePlayer(Constants.plugin, player);
-            remPacket.sendPacket(p);
+            updatePacket.sendPacket(p);
             p.showPlayer(Constants.plugin, player);
-            addPacket.sendPacket(p);
         }
     }
 

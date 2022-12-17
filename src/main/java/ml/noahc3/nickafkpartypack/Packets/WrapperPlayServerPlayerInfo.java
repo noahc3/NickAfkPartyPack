@@ -1,6 +1,7 @@
 package ml.noahc3.nickafkpartypack.Packets;
 
 import java.util.List;
+import java.util.Set;
 
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.events.PacketContainer;
@@ -19,19 +20,19 @@ public class WrapperPlayServerPlayerInfo extends AbstractPacket {
         super(packet, TYPE);
     }
 
-    public PlayerInfoAction getAction() {
-        return handle.getPlayerInfoAction().read(0);
+    public Set<PlayerInfoAction> getAction() {
+        return handle.getPlayerInfoActions().read(0);
     }
 
-    public void setAction(PlayerInfoAction value) {
-        handle.getPlayerInfoAction().write(0, value);
+    public void setAction(Set<PlayerInfoAction> value) {
+        handle.getPlayerInfoActions().write(0, value);
     }
 
     public List<PlayerInfoData> getData() {
-        return handle.getPlayerInfoDataLists().read(0);
+        return handle.getPlayerInfoDataLists().read(1);
     }
 
     public void setData(List<PlayerInfoData> value) {
-        handle.getPlayerInfoDataLists().write(0, value);
+        handle.getPlayerInfoDataLists().write(1, value);
     }
 }

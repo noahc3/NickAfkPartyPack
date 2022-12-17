@@ -6,7 +6,7 @@
 
     <groupId>ml.noahc3</groupId>
     <artifactId>NickAfkPartyPack</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 
     <repositories>
         <repository>
@@ -23,12 +23,12 @@
         <dependency>
             <groupId>com.comphenix.protocol</groupId>
             <artifactId>ProtocolLib</artifactId>
-            <version>4.8.0</version>
+            <version>5.0.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.18.2-R0.1-SNAPSHOT</version>
+            <version>1.19.3-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

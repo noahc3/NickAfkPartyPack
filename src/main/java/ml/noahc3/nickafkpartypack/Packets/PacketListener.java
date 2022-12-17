@@ -16,6 +16,7 @@ import org.bukkit.entity.Player;
 import java.util.Collections;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class PacketListener {
     private static PacketAdapter playServerPlayerInfo;
@@ -23,11 +24,11 @@ public class PacketListener {
         playServerPlayerInfo = new PacketAdapter(Constants.plugin, PacketType.Play.Server.PLAYER_INFO) {
             @Override
             public void onPacketSending(PacketEvent event) {
-                if (event.getPacket().getPlayerInfoAction().read(0) != EnumWrappers.PlayerInfoAction.ADD_PLAYER) return;
-
+                Set<EnumWrappers.PlayerInfoAction> actions = event.getPacket().getPlayerInfoActions().read(0);
+                if (!actions.contains(EnumWrappers.PlayerInfoAction.ADD_PLAYER)) return;
                 boolean bShowAfkTagOverHeads = Constants.config.getBoolean("show-afk-tag-over-heads");
                 List<PlayerInfoData> newPlayerInfoDataList = new ArrayList<>();
-                List<PlayerInfoData> playerInfoDataList = event.getPacket().getPlayerInfoDataLists().read(0);
+                List<PlayerInfoData> playerInfoDataList = event.getPacket().getPlayerInfoDataLists().read(1);
                 for (PlayerInfoData pid : playerInfoDataList) {
                     PlayerInfoData newPid = null;
                     WrappedGameProfile profile = pid != null ? pid.getProfile() : null;
@@ -46,7 +47,7 @@ public class PacketListener {
                      }
                      newPlayerInfoDataList.add(newPid != null ? newPid : pid);
                 }
-                event.getPacket().getPlayerInfoDataLists().write(0, newPlayerInfoDataList);
+                event.getPacket().getPlayerInfoDataLists().write(1, newPlayerInfoDataList);
             }
         };
 

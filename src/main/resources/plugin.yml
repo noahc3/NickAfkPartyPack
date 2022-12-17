@@ -1,7 +1,7 @@
 name: NickAfkPartyPack
-version: 1.0.3
+version: 1.0.4
 main: ml.noahc3.nickafkpartypack.NickAfkPartyPack
-api-version: 1.18
+api-version: 1.19.3
 author: noahc3
 website: https://www.curseforge.com/minecraft/bukkit-plugins/nick-afk-party-pack
 depend: [ProtocolLib]
