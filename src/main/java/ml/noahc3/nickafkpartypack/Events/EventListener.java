@@ -28,8 +28,9 @@ public class EventListener implements Listener {
     }
 
     public static void SlowTick() {
-        long afkTime = Constants.config.getInt("auto-afk-time-seconds") * 1000L;
-        long kickTime = Constants.config.getInt("afk-kick-time-seconds") * 1000L;
+        final long afkTime = Constants.config.getInt("auto-afk-time-seconds") * 1000L;
+        final long kickTime = Constants.config.getInt("afk-kick-time-seconds") * 1000L;
+        final long now = System.currentTimeMillis();
 
         for(UUID u : Constants.afkTimestamps.keySet()) {
             Player player = Bukkit.getPlayer(u);
@@ -40,9 +41,10 @@ public class EventListener implements Listener {
                 updatePlayerStamps(player);
             }
 
-            if (kickTime >= 0 && System.currentTimeMillis() > Constants.afkTimestamps.get(u) + kickTime) {
+            if (kickTime >= 0 && now > Constants.afkTimestamps.get(u) + kickTime) {
+                if (player.hasPermission("nickafkpartypack.op.nokick")) continue;
                 player.kickPlayer("You have been AFK for too long.");
-            } else if (afkTime >= 0 && System.currentTimeMillis() > Constants.afkTimestamps.get(u) + afkTime) {
+            } else if (afkTime >= 0 && now > Constants.afkTimestamps.get(u) + afkTime) {
                 Tasks.setAfk(player, true);
             }
         }
